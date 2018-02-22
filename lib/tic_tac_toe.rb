@@ -24,6 +24,10 @@ def valid_move?(board, index)
   index.between?(0,8) && !position_taken?(board, index)
 end
 
+def turn_count(board)
+  board.select{|position| position == "X" || position == "O"}.length
+end
+
 def turn(board)
   puts "Please enter 1-9:"
   index = input_to_index(gets.strip)

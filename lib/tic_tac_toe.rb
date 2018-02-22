@@ -28,6 +28,10 @@ def turn_count(board)
   board.select{|position| position == "X" || position == "O"}.length
 end
 
+def current_player(board)
+  turn_count(board) % 2 == 0 ? "X" : "O"
+end
+
 def turn(board)
   puts "Please enter 1-9:"
   index = input_to_index(gets.strip)

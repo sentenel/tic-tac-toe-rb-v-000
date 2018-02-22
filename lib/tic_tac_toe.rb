@@ -42,3 +42,25 @@ def turn(board)
     turn(board)
   end
 end
+
+def won?(board)
+  WIN_COMBINATIONS.detect do |combination|
+    combination.all?{|index| board[index] == "X"} || combination.all?{|index| board[index] == "O"}
+  end
+end
+
+def full?(board)
+  board.all?{|position| ["X", "O"].include?(position)}
+end
+
+def draw?(board)
+  full?(board) && !won?(board)
+end
+
+def over?(board)
+  won?(board) || full?(board)
+end
+
+def winner(board)
+  won?(board) ? board[won?(board)[0]] : nil
+end
